@@ -8,7 +8,7 @@ total_file_size = 0
 status_code = {c: 0 for c in [
                "200", "301", "400", "401",
                "402", "403", "404", "405", "500"]}
-line_code = 0
+ln_code = 0
 
 
 def display_stats():
@@ -42,8 +42,8 @@ for ln in sys.stdin:
         if stats_code in status_code:
             status_code[stats_code] += 1
 
-        ln_count += 1
-        if ln_count % 10 == 0:
+        ln_code += 1
+        if ln_code % 10 == 0:
             display_stats()
     except Exception:
         continue
