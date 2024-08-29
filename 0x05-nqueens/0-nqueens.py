@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """ N Queens Problem - Interview question """
+import sys
 
 
 class NQueensSolver:
     """ Solves the N Queens Problem """
     def __init__(self, size):
-        """ Constructor """
+        """ Constructor to init the board and solutions """
         self.size = size
         self.board = [-1] * size
         self.solutions = []
@@ -44,26 +45,27 @@ class NQueensCLI:
     """ Class responsible for user handling io """
     def run(self):
         """ Runs the CLI and handles io """
-        try:
-            size = self._validate_input()
-            solver = NQueensSolver(size)
-            solutions = solver.solve()
-            for solution in solutions:
-                print(solution)
-        except ValueError as e:
-            print(e)
+        size = self._validate_input()
+        solver = NQueensSolver(size)
+        solutions = solver.solve()
+        for solution in solutions:
+            print(solution)
 
     def _validate_input(self):
         """ Validates user input """
-        usr_input = input("Enter the value of N (>=4): ").strip()
+        if len(sys.argv) != 2:
+            print("Usage: nqueens N")
+            exit(1)
 
         try:
-            size = int(usr_input)
+            size = int(sys.argv[1])
         except ValueError:
-            raise ValueError("N must be a number")
+            print("N must be a number")
+            exit(1)
 
         if size < 4:
-            raise ValueError("N must be at least 4")
+            print("N must be at least 4")
+            exit(1)
 
         return size
 
