@@ -5,7 +5,9 @@ const req = require('request');
 const baseUrl = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}`;
 
 req(baseUrl, (err, res, body) => {
-  if (err) throw err;
+  if (err) {
+    throw err;
+  }
 
   if (res.statusCode !== 200) {
     console.error('status code issue:', res.statusCode);
