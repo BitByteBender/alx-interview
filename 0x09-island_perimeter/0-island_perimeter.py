@@ -1,5 +1,9 @@
+#!/usr/bin/python3
+""" Island perimeter Algorithm """
+
+
 def island_perimeter(grid):
-    """ Island perimeter Algorithm """
+    """ Calculates perimeter by checking edges of each land cell """
     pm = 0
     row = len(grid)
     col = len(grid[0])
